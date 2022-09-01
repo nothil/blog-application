@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     "& > *": {
       marginTop: "20px",
     },
-    backgroundColor: "#CCCCFF",
+    backgroundColor: "#FFFF",
   },
   button: {
     backgroundColor: "#0DCAF0",
@@ -28,15 +28,15 @@ const useStyles = makeStyles({
 });
 
 const initialValues = {
-  name: "",
-  username: "",
+  firstName: "",
+  lastName: "",
   email: "",
   phone: "",
 };
 
 const EditUser = () => {
   const [user, setUser] = useState(initialValues);
-  const { name, username, email, phone } = user;
+  const { firstName, lastName, email, phone } = user;
   const { id } = useParams();
   const className = useStyles();
   const history = useNavigate();
@@ -51,11 +51,14 @@ const EditUser = () => {
 
   const valueChange = (e) => {
     console.log(e.target.value);
+    console.log(JSON.stringify(user));
+    console.log(e.target.name);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const editUserDetail = async () => {
-    await editUser(id, user);
+    console.log(JSON.stringify(user) + "---->");
+    await editUser(user.id, user);
     history("/all");
   };
 
@@ -65,14 +68,18 @@ const EditUser = () => {
         <Typography variant="h3"> Update User </Typography>
         <FormControl>
           <InputLabel> Name </InputLabel>
-          <Input onChange={(e) => valueChange(e)} name="name" value={name} />
+          <Input
+            onChange={(e) => valueChange(e)}
+            name="firstName"
+            value={firstName}
+          />
         </FormControl>
         <FormControl>
           <InputLabel> User Name </InputLabel>
           <Input
             onChange={(e) => valueChange(e)}
-            name="username"
-            value={username}
+            name="lastName"
+            value={lastName}
           />
         </FormControl>
         <FormControl>

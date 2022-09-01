@@ -27,15 +27,15 @@ const useStyles = makeStyles({
 });
 
 const initialValues = {
-  name: "",
-  username: "",
+  firstName: "",
+  lastName: "",
   email: "",
   phone: "",
 };
 
 const AddUser = () => {
   const [user, setUser] = useState(initialValues);
-  const { name, username, email, phone } = user;
+  const { firstName, lastName, email, phone } = user;
   const className = useStyles();
   const history = useNavigate();
 
@@ -52,17 +52,21 @@ const AddUser = () => {
   return (
     <Box>
       <FormGroup className={className.container}>
-        <Typography variant="h3"> Add User </Typography>
+        <Typography variant="h2"> Add User </Typography>
         <FormControl>
           <InputLabel> Name </InputLabel>
-          <Input onChange={(e) => valueChange(e)} name="name" value={name} />
-        </FormControl>
-        <FormControl>
-          <InputLabel> User Name </InputLabel>
           <Input
             onChange={(e) => valueChange(e)}
-            name="username"
-            value={username}
+            name="firstName"
+            value={firstName}
+          />
+        </FormControl>
+        <FormControl>
+          <InputLabel> last name </InputLabel>
+          <Input
+            onChange={(e) => valueChange(e)}
+            name="lastName"
+            value={lastName}
           />
         </FormControl>
         <FormControl>

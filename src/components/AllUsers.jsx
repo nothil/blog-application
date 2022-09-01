@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+// import axios from "axios";
+
 import {
   Box,
   Button,
@@ -27,7 +29,7 @@ const useStyles = makeStyles({
 });
 
 const AllUsers = () => {
-  const classname = useStyles();
+  const className = useStyles();
   const [addData, setAddData] = useState([]);
   useEffect(() => {
     getAllUsers();
@@ -44,8 +46,8 @@ const AllUsers = () => {
   };
 
   return (
-    <Table className={classname.table}>
-      <TableHead className={classname.thead}>
+    <Table className={className.table}>
+      <TableHead className={className.thead}>
         <TableRow>
           <TableCell> ID </TableCell>
           <TableCell> Name </TableCell>
@@ -55,12 +57,12 @@ const AllUsers = () => {
           <TableCell> </TableCell>
         </TableRow>
       </TableHead>
-      <TableBody className={classname.tbody}>
+      <TableBody className={className.tbody}>
         {addData.map((user) => (
           <TableRow>
-            <TableCell> {user.id} </TableCell>
-            <TableCell> {user.name} </TableCell>
-            <TableCell> {user.username} </TableCell>
+            <TableCell> # </TableCell>
+            <TableCell> {user.firstName} </TableCell>
+            <TableCell> {user.lastName} </TableCell>
             <TableCell> {user.email} </TableCell>
             <TableCell> {user.phone} </TableCell>
             <TableCell>
@@ -69,14 +71,14 @@ const AllUsers = () => {
                 color="Primary"
                 component={Link}
                 style={{ marginRight: "15px" }}
-                to={`/edit/${user.id}`}
+                to={`/edit/${user._id}`}
               >
                 Edit
               </Button>
               <Button
                 variant="contained"
                 color="secondary"
-                onClick={() => deleteUserData(user.id)}
+                onClick={() => deleteUserData(user._id)}
               >
                 Delete
               </Button>
