@@ -34,7 +34,7 @@ const Navbar = () => {
         <Toolbar>
           <NavLink to="./" className={className.tabs}>
             {" "}
-            Home{" "}
+            Sign up{" "}
           </NavLink>
           <NavLink to="all" className={className.tabs}>
             {" "}

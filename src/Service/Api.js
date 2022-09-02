@@ -19,3 +19,7 @@ export const editUser = async (id, user) => {
 export const deleteUser = async (id) => {
   return await axios.delete(`${url}/${id}`);
 };
+
+export const registerUser = async (user) => {
+  return await axios.post(url, user);
+};
